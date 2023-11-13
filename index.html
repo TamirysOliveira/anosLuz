@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Anos-luz</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conversor de Anos-luz para Quilômetros</title>
+</head>
+<body>
+  <script>
+    function anosLuzParaQuilometros(anosLuz) {
+      var quilometrosPorAnoLuz = 9.461e12;
+      var quilometros = anosLuz * quilometrosPorAnoLuz;
+      return quilometros;
+    }
+
+    function converter() {
+      var resultadoElement = document.getElementById("resultado");
+      var distanciaEmAnosLuz = parseFloat(document.getElementById("anosLuzInput").value);
+
+      if (isNaN(distanciaEmAnosLuz)) {
+        resultadoElement.textContent = "Por favor, insira um valor numérico válido.";
+      } else {
+        var distanciaEmQuilometros = anosLuzParaQuilometros(distanciaEmAnosLuz);
+        resultadoElement.classList.add("resultadoEstilizado");
+
+        resultadoElement.textContent = `${distanciaEmAnosLuz} anos-luz é aproximadamente igual a ${distanciaEmQuilometros.toExponential(2)} quilômetros.`;
+      }
+    }
+  </script>
+
+<div class="container">
+  <h1 class="page-title">
+    Conversor de anos-luz
+  </h1>
+</div>
+
+  <label for="anosLuzInput">Digite a distância em anos-luz:</label> <br>
+  <input type="text" id="anosLuzInput" placeholder="Insira a distância em anos-luz"> <br>
+  <button onclick="converter()">Converter</button>
+
+  <p id="resultado"></p>
+<!-- partial -->
+  
+</body>
+</html>
